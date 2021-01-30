@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'pry'
 describe "Board" do
   let(:board){Board.new}
 
@@ -37,7 +37,6 @@ describe "Board" do
   describe '#display' do
     it 'prints the board' do
       board.cells = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
-
       output = capture_puts{ board.display }
 
       expect(output).to include(" X | X | X ")
@@ -45,7 +44,7 @@ describe "Board" do
       expect(output).to include(" X | O | O ")
       expect(output).to include("-----------")
       expect(output).to include(" X | O | O ")
-
+   
 
       board.cells = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
 
@@ -62,10 +61,11 @@ describe "Board" do
   describe '#position' do
     it 'takes in user input and returns the value of the board cell' do
       board.cells = ["O", " ", " ", " ", "X", " ", " ", " ", "X"]
-
+      
       expect(board.position("1")).to eq("O")
       expect(board.position("2")).to eq(" ")
       expect(board.position("5")).to eq("X")
+      
     end
   end
 
